@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🖼️ 畫面簡報 – Climbers' Escape Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      transition: background 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.4); }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .page-header .icon { font-size: 3.5rem; margin-bottom: 8px; }
+    .page-header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+    }
+    .page-header p { color: rgba(255,255,255,0.85); font-weight: 600; margin-top: 4px; }
+
+    /* Slideshow */
+    .slideshow-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .slide-display {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slide-display img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .slide-counter {
+      text-align: center;
+      margin: 14px 0 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f5576c;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .ctrl-btn {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 28px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 12px rgba(245,87,108,0.4);
+    }
+    .ctrl-btn:hover { transform: scale(1.06); box-shadow: 0 8px 20px rgba(245,87,108,0.5); }
+    .ctrl-btn:disabled { opacity: 0.4; cursor: default; transform: none; }
+
+    /* Thumbnails */
+    .thumb-label {
+      font-weight: 800;
+      color: #f5576c;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .thumbs::-webkit-scrollbar { height: 4px; }
+    .thumbs::-webkit-scrollbar-thumb { background: #f093fb; border-radius: 4px; }
+    .thumb {
+      flex-shrink: 0;
+      width: 100px;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .thumb:hover { transform: scale(1.05); }
+    .thumb.active { border-color: #f5576c; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  </style>
+</head>
+<body>
+  <div style="max-width:860px; margin:0 auto;">
+    <a href="index.html" class="back-btn">← 返回首頁</a>
+
+    <div class="page-header">
+      <div class="icon">🖼️</div>
+      <h1>畫面簡報 Slides</h1>
+      <p>共 13 張投影片 · 點選縮圖快速跳頁</p>
+    </div>
+
+    <div class="slideshow-wrap">
+      <div class="slide-display">
+        <img id="mainSlide" src="slides_images/slide1.png" alt="Slide 1">
+      </div>
+      <div class="slide-counter">第 <span id="curNum">1</span> / 13 張</div>
+      <div class="controls">
+        <button class="ctrl-btn" id="prevBtn" onclick="changeSlide(-1)">◀ 上一張</button>
+        <button class="ctrl-btn" id="nextBtn" onclick="changeSlide(1)">下一張 ▶</button>
+      </div>
+      <div class="thumb-label">🗂️ 所有投影片</div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </div>
+
+  <script>
+    let cur = 0;
+    const total = 13;
+    const img = document.getElementById('mainSlide');
+    const curNum = document.getElementById('curNum');
+    const thumbsEl = document.getElementById('thumbs');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    for (let i = 0; i < total; i++) {
+      const t = document.createElement('div');
+      t.className = 'thumb' + (i === 0 ? ' active' : '');
+      t.innerHTML = `<img src="slides_images/slide${i+1}.png" alt="Slide ${i+1}">`;
+      t.onclick = () => goTo(i);
+      thumbsEl.appendChild(t);
+    }
+
+    function goTo(n) {
+      cur = n;
+      img.src = `slides_images/slide${cur+1}.png`;
+      curNum.textContent = cur + 1;
+      prevBtn.disabled = cur === 0;
+      nextBtn.disabled = cur === total - 1;
+      document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === cur));
+      thumbsEl.children[cur].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function changeSlide(dir) { goTo(cur + dir); }
+    goTo(0);
+  </script>
+</body>
+</html>

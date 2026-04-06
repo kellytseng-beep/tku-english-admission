@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎮 開始遊戲 – Climbers' Escape Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #43e97b 0%, #38f9d7 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.3);
+      color: #1a5c3a;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      transition: background 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.5); }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .page-header .icon {
+      font-size: 3.5rem;
+      margin-bottom: 8px;
+      display: block;
+      animation: bounce 1s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .page-header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: #1a5c3a;
+      text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+    }
+    .page-header p { color: rgba(30,90,60,0.85); font-weight: 700; margin-top: 4px; }
+
+    .game-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .tips-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tip-chip {
+      background: linear-gradient(135deg, #e8fff4, #d0fce8);
+      border-left: 4px solid #43e97b;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #1a5c3a;
+      font-weight: 700;
+      flex: 1;
+      min-width: 160px;
+    }
+    .tip-chip span { font-size: 1.2rem; margin-right: 6px; }
+
+    .game-embed {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 500px;
+      background: #f0fff8;
+      border: 3px solid #43e97b;
+    }
+
+    .game-embed .container-wrapper-genially {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width:900px; margin:0 auto;">
+    <a href="index.html" class="back-btn">← 返回首頁</a>
+
+    <div class="page-header">
+      <span class="icon">🎮</span>
+      <h1>開始遊戲！Play Now!</h1>
+      <p>Climbers' Escape Game: In Search of Bigfoot 🦶</p>
+    </div>
+
+    <div class="game-card">
+      <div class="tips-row">
+        <div class="tip-chip"><span>⏱️</span>每題限時 15 秒，保持冷靜！</div>
+        <div class="tip-chip"><span>🎯</span>完成任務蒐集道具，攻頂尋找 Bigfoot</div>
+        <div class="tip-chip"><span>🏆</span>挑戰個人或與同學競賽！</div>
+      </div>
+
+      <div class="game-embed">
+        <div class="container-wrapper-genially" style="position: relative; min-height: 500px; max-width: 100%;">
+          <video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted"
+            style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%">
+            <source src="https://static.genially.com/resources/loader-default-rebranding.mp4" type="video/mp4" />
+          </video>
+          <div id="69acd7a99abf43c2f019ecba" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genially.com/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));</script>
+</body>
+</html>

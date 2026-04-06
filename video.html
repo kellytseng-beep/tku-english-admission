@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 影片 – Climbers' Escape Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #4facfe 0%, #00f2fe 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      transition: background 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.4); }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .page-header .icon { font-size: 3.5rem; margin-bottom: 8px; }
+    .page-header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.12);
+    }
+    .page-header p { color: rgba(255,255,255,0.85); font-weight: 600; margin-top: 4px; }
+
+    .video-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .video-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .video-info {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .video-info .vi-icon { font-size: 2.2rem; }
+    .video-info .vi-text h3 { font-size: 1.1rem; font-weight: 800; color: #1a7abf; }
+    .video-info .vi-text p { font-size: 0.9rem; color: #666; margin-top: 3px; }
+
+    .tip-box {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #e0f7ff, #cceeff);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #1a7abf;
+      font-weight: 600;
+    }
+    .tip-box .tip-icon { font-size: 1.4rem; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div style="max-width:860px; margin:0 auto;">
+    <a href="index.html" class="back-btn">← 返回首頁</a>
+
+    <div class="page-header">
+      <div class="icon">🎬</div>
+      <h1>影片 Video</h1>
+      <p>Climbers' Escape Game 介紹影片</p>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="">
+          <source src="Digital_Escape_Room_Video.mp4" type="video/mp4">
+          您的瀏覽器不支援 HTML5 影片。
+        </video>
+      </div>
+
+      <div class="video-info">
+        <div class="vi-icon">🏔️</div>
+        <div class="vi-text">
+          <h3>Digital Escape Room – Climbers' Escape Game</h3>
+          <p>In Search of Bigfoot · 數位密室逃脫遊戲介紹影片</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div>觀看完影片後，可前往<strong>「開始遊戲」</strong>頁面親自體驗密室逃脫！</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
