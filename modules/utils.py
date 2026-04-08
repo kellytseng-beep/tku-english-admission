@@ -9,7 +9,7 @@ from typing import List, Dict, Optional
 DEFAULT_SUBJECTS = {
     "english": "英文",
     "chinese": "國文",
-    "history": "歷史",
+    "social": "社會",
     "total": "總級分",
 }
 
@@ -17,7 +17,7 @@ DEFAULT_SUBJECTS = {
 DEFAULT_WEIGHTS = {
     "english": 1.0,
     "chinese": 1.0,
-    "history": 1.0,
+    "social": 1.0,
     "total": 1.0,
 }
 
@@ -26,7 +26,7 @@ DEFAULT_QUOTA = 50
 DEFAULT_SCREENING_MULTIPLIER = 3.0
 
 # 同分參酌預設順序
-DEFAULT_TIEBREAK_ORDER = ["english", "chinese", "history", "total"]
+DEFAULT_TIEBREAK_ORDER = ["english", "chinese", "social", "total"]
 
 
 def get_subject_display_name(subject_key: str) -> str:

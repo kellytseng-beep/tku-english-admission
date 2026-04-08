@@ -94,16 +94,16 @@ def generate_sample_applicants(n: int = 500, seed: int = 42) -> pd.DataFrame:
 
     english = rng.integers(5, 16, size=n)
     chinese = rng.integers(5, 16, size=n)
-    history = rng.integers(5, 16, size=n)
+    social = rng.integers(5, 16, size=n)
     # 總級分 = 各科加總再加上其他未列出科目的隨機分數
     others = rng.integers(10, 31, size=n)
-    total = english + chinese + history + others
+    total = english + chinese + social + others
 
     df = pd.DataFrame({
         "applicant_id": range(1, n + 1),
         "english": english,
         "chinese": chinese,
-        "history": history,
+        "social": social,
         "total": total,
     })
     return df

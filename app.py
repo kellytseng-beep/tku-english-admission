@@ -81,8 +81,8 @@ st.sidebar.caption("依序篩選，可選單科或組合（加總）")
 # 預先建立組合選項
 SCREEN_OPTIONS = list(SUBJECT_OPTIONS)  # 單科
 SCREEN_OPTIONS += [
-    "english+chinese", "english+history", "chinese+history",
-    "english+chinese+history",
+    "english+chinese", "english+social", "chinese+social",
+    "english+chinese+social",
 ]
 def format_screen_option(x):
     parts = x.split("+")
@@ -249,7 +249,7 @@ with tab_upload:
                             "模擬考生數": f"{total:,}",
                             "英文均值": wmean("english"),
                             "國文均值": wmean("chinese"),
-                            "歷史均值": wmean("history"),
+                            "社會均值": wmean("social"),
                         })
                     except:
                         pass
@@ -451,6 +451,17 @@ with tab_compare:
                     )
                     s_levels.append(ScreeningLevel(subject=sj, multiplier=sm))
 
+                # 志願申請人數
+                st.markdown("**志願申請人數**")
+                s_app_count = st.number_input(
+                    "申請人數",
+                    min_value=1,
+                    value=estimated_app,
+                    step=10,
+                    key=f"cmp_app_count_{i}",
+                    help="並非所有通過檢定的考生都會報名本系",
+                )
+
                 # 上限排除（每個策略用不同 label 避免 expander 衝突）
                 with st.expander(f"🔺 排除不可能報名者（策略 {chr(65+i)}）"):
                     s_upper = {}
@@ -466,6 +477,7 @@ with tab_compare:
                     f"策略 {chr(65 + i)}",
                     custom_thresholds=s_thresh,
                     custom_levels=s_levels,
+                    custom_app_count=s_app_count,
                     custom_upper=s_upper,
                 ))
 
