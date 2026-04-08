@@ -137,7 +137,7 @@ elif app_mode == "指定申請率":
 
 # ── 同分參酌 ──
 st.sidebar.header("五、同分參酌順序")
-st.sidebar.caption("預設：英文 > 國文 > 社會 > 總級分")
+st.sidebar.caption("預設：英文 > 國文 > 社會 > 三科加總")
 tiebreak_order = DEFAULT_TIEBREAK_ORDER
 
 

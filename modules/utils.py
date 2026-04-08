@@ -10,7 +10,7 @@ DEFAULT_SUBJECTS = {
     "english": "英文",
     "chinese": "國文",
     "social": "社會",
-    "total": "總級分",
+    "total": "三科加總",
 }
 
 # 預設權重
