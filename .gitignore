@@ -8,3 +8,24 @@ dist/
 build/
 .DS_Store
 Thumbs.db
+
+# Debug/temp HTML from investigation (not for committing)
+award_step*.html
+awardq*.html
+was_home.html
+was2.html
+was3.html
+esq_*.html
+tpr_result.html
+tfjx_faculty.html
+nstc_test.html
+
+# Partial scraping state (intermediate, regenerated each run)
+*_partial.json
+nstc_partial.json
+dept_parse_test.json
+detail_test.json
+detail_test_out.json
+
+# Logs
+*.log
